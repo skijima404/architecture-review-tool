@@ -1,81 +1,100 @@
-# TOGAFフェーズ別 アーキテクチャレビュー観点ガイド
+# TOGAF Phase-Specific Architecture Review Perspective Guide
 
-本ドキュメントは、TOGAF ADM（Architecture Development Method）の各フェーズ終了時点で実施するアーキテクチャレビューにおける、代表的な観点とレビュー目的を整理したガイドである。
+This document is a guide that organizes representative perspectives and review objectives for architecture reviews conducted at the end of each phase of the TOGAF ADM (Architecture Development Method).
 
-## Aフェーズ: Architecture Vision
+## Phase A: Architecture Vision
 
-- **レビュー観点**:
-  - ビジネスビジョンと整合したNFR（非機能要件）の明確化
-  - 投資判断に足る構想の具体性
-- **確認すべきリスク**:
-  - NFRが単なるテンプレで定義されており、ビジョンと紐づいていない
-  - 構想が抽象的すぎて技術設計とつながらない
-- **補足観点**:
-  - ステークホルダー（ビジネス、運用、セキュリティ等）の期待値がアーキテクチャ原則に反映されているか
-  - アーキテクチャ対象のスコープが明確に定義されているか（境界設定）
+- **Review Perspectives**:
+  - Clarification of NFRs (Non-Functional Requirements) aligned with the business vision
+  - Sufficient concreteness of the concept to support investment decisions
+- **Risks to Confirm**:
+  - NFRs are defined only as templates and are not linked to the vision
+  - The concept is too abstract and disconnected from technical design
+- **Supplementary Perspectives**:
+  - Are stakeholders' (business, operations, security, etc.) expectations reflected in the architecture principles?
+  - Is the scope of the architecture clearly defined (boundary setting)?
 
-## B–Dフェーズ: Business / Information Systems / Technology Architecture
+## Phases B–D: Business / Information Systems / Technology Architecture
 
-- **レビュー観点**:
-  - NFRと構成設計の整合性（性能、可用性、変更容易性など）
-  - 技術スタックの整合性（例: CamelやKafkaの導入理由）
-  - 開発断面・デリバリ断面の整合性（開発容易性、CI/CD対応性）
-  - 説明可能な責務分割（サービス粒度、所有データの明確化）
+- **Review Perspectives**:
+  - Consistency between NFRs and configuration design (performance, availability, modifiability, etc.)
+  - Consistency of the technology stack (e.g., reasons for introducing Camel or Kafka)
+  - Consistency between development aspects and delivery aspects (ease of development, CI/CD compatibility)
+  - Explainable responsibility division (service granularity, clear ownership of data)
 
-- **補足観点**:
-  - 🚨ファサード層（Camel等）の未定義
-  - 🚨旧・新比較の仕組み（Rule Engine等）の欠如
-  - 🚨並行稼働のための前提環境未整備
-  - 🚨テスト戦略との構造整合性が欠如
-  - アーキテクチャにおける主要なトレードオフ（例: 性能 vs 柔軟性）の認識と説明がされているか
-  - セキュリティ設計（認証・認可、脅威モデリングなど）が初期段階から検討されているか
-  - 組織で標準化された技術資産を有効活用しているか
-  - 運用容易性（監視、アラート、メトリクス）を開発構成に組み込んでいるか
+- **Supplementary Perspectives**:
+  - 🚨 Undefined facade layer (e.g., Camel)
+  - 🚨 Lack of old vs. new comparison mechanisms (e.g., Rule Engine)
+  - 🚨 Premise environment for parallel operation not prepared
+  - 🚨 Lack of structural consistency with test strategy
+  - Recognition and explanation of major trade-offs in architecture (e.g., performance vs. flexibility)
+  - Security design (authentication, authorization, threat modeling, etc.) considered from the initial stages
+  - Effective utilization of standardized technical assets within the organization
+  - Incorporation of operational ease (monitoring, alerts, metrics) into the development configuration
 
-## Eフェーズ: Opportunities & Solutions
+## Phase E: Opportunities & Solutions
 
-- **レビュー観点**:
-  - ベンダー割当や契約単位がアーキテクチャと整合しているか
-  - 責任分界が構成図と矛盾していないか
-  - ソリューション構成が過剰・過少になっていないか
-- **補足観点**:
-  - ソリューション案が予算・リソース・スケジュール制約下で実現可能か
-  - 必要に応じてPoCを実施し、その結果を反映しているか
+- **Review Perspectives**:
+  - Whether vendor assignments and contract units align with the architecture
+  - Whether responsibility boundaries do not conflict with configuration diagrams
+  - Whether the solution configuration is neither excessive nor insufficient
+- **Supplementary Perspectives**:
+  - Whether solution proposals are feasible under budget, resource, and schedule constraints
+  - Whether PoCs are conducted as needed and their results are reflected
 
-## Fフェーズ: Migration Planning
+## Phase F: Migration Planning
 
-- **レビュー観点**:
-  - ストラングラーパターンを含めた移行戦略の妥当性
-  - OCM（組織変更管理）・運用体制の整備方針
-  - 環境移行、DB分離、段階的切替のための技術支援設計の有無
-- **補足観点**:
-  - 移行中のビジネス継続性が担保されているか（停止リスクやロールバック戦略）
-  - データ移行に関する計画・検証・リハーサルが含まれているか
+- **Review Perspectives**:
+  - Validity of migration strategy including strangler pattern
+  - Formulation of OCM (Organizational Change Management) and operational system policies
+  - Presence of technical support design for environment migration, DB separation, and phased switching
+- **Supplementary Perspectives**:
+  - Whether business continuity during migration is ensured (risks of downtime and rollback strategies)
+  - Inclusion of planning, verification, and rehearsal for data migration
 
-## Gフェーズ: Implementation Governance（前半：技術実装との整合、後半：成果との整合）
+## Phase G: Implementation Governance (First half: Alignment with technical implementation, Second half: Alignment with outcomes)
 
-- **レビュー観点**:
-  - リリース計画・WBSが構成と整合しているか
-  - リリース順が依存関係と合致しているか
-  - 運用への引き渡しの準備（ログ設計、観測性、障害対応設計）
-  - 実装された構成がVisionで掲げた成果・効果指標に寄与するか
-  - 構成と成果指標のマッピング可否
-  - 想定ユーザ・ステークホルダーの満足に寄与するか
+- **Review Perspectives**:
+  - Whether release plans and WBS align with the configuration
+  - Whether release order matches dependencies
+  - Preparation for handover to operations (log design, observability, failure response design)
+  - Whether the implemented configuration contributes to the outcomes and effectiveness indicators set in the Vision
+  - Whether mapping between configuration and outcome indicators is possible
+  - Whether it contributes to the satisfaction of intended users and stakeholders
 
-- **補足観点**:
-  - 🚨運用引継ぎ前レビューにて、Dフェーズで漏れたログ/監視設計の不備が露呈しやすい
-  - 🚨実装スプリントとの整合レビューが重要
-  - アーキテクチャ遵守のための実装レビュー・ガイドラインが存在し、運用されているか
-  - 技術的負債の検出・記録・返済方針が明示されているか
-  - 成果評価に定量的/定性的な指標の両方が活用されているか
-  - Visionとのギャップに対して、改善アクションが明確化されているか
+- **Supplementary Perspectives**:
+  - 🚨 In pre-operation handover reviews, deficiencies in log/monitoring design missed in Phase D are often revealed
+  - 🚨 Alignment reviews with implementation sprints are important
+  - Whether implementation reviews and guidelines for architecture compliance exist and are operated
+  - Whether policies for detecting, recording, and repaying technical debt are clearly stated
+  - Whether both quantitative and qualitative indicators are used for outcome evaluation
+  - Whether improvement actions are clarified for gaps with the Vision
 
-## Hフェーズ: Architecture Change Management
+## Phase H: Architecture Change Management
 
-- **レビュー観点**:
-  - 継続的レビューの仕組みが組み込まれているか（原則、ADR）
-  - Architecture Repositoryとの連携
-  - レビュー観点が将来にも再利用可能な形式で整理されているか
-- **補足観点**:
-  - アーキテクチャ変更要求の受付・評価・承認プロセスが整備されているか
-  - 原則・ルールが変化を通じても維持されているか（例：変更の記録とフィードバック）
+- **Review Perspectives**:
+  - Whether a mechanism for continuous review is incorporated (principally ADR)
+  - Integration with the Architecture Repository
+  - Whether review perspectives are organized in a format reusable in the future
+- **Supplementary Perspectives**:
+  - Whether processes for receiving, evaluating, and approving architecture change requests are established
+  - Whether principles and rules are maintained through changes (e.g., recording changes and feedback)
+
+## Supplement: Integration with Architecture Review Axes
+
+The phase-specific review perspectives presented in this guide are organized chronologically as viewpoints to be confirmed at milestones along the TOGAF ADM process.
+
+On the other hand, the "Architecture Review Axes" is a supplementary framework that organizes architecture reviews along two structural axes to visualize the comprehensiveness and depth of the review target:
+
+- **Impact Axis** (e.g., development aspects, delivery aspects, business alignment, project progress, organizational fit, contract and procurement alignment, knowledge management, etc.)
+- **Depth Axis** (surface level, configuration design level, concept/intent level, outcome-oriented level)
+
+Using this framework together can provide practical benefits such as:
+
+- Organizing which domains and depths each phase's review perspectives correspond to
+- Confirming coverage of check points and highlighting key areas
+- Establishing a common understanding of the review scope among stakeholders before conducting reviews
+- Structuring and reusing review content effectively for recording and knowledge management
+- Serving as a foundation for designing review support prompts using tools like ChatGPT
+
+The "Architecture Review Axes" acts as a powerful complementary tool to grasp the perspectives presented in this guide three-dimensionally and to design and conduct review activities more effectively overall.

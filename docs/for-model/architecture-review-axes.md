@@ -63,3 +63,18 @@ This structure is based on the following principles:
 - **Extensibility**: The matrix is adaptable—add/remove axes or weight certain areas depending on project type and organizational maturity.
 
 This matrix shifts architecture review from subjective “gut checks” to structured decision support. When combined with phase-specific TOGAF review designs, it strengthens the coherence and timing of architectural validations. See [TOGAF Review Guide](./togaf-review-guide.md) for further details.
+
+
+## 6. Maturity Model Perspective
+
+The Architecture Review Axes matrix can also serve as a Maturity Model to assess and improve how architecture reviews are conducted. This perspective helps organizations track their review practices' growth over time and establish goals for improvement.
+
+| Perspective | Initial (Level 1) | Developing (Level 2–3) | Advanced (Level 4–5) |
+|-------------|-------------------|-------------------------|------------------------|
+| **Impact Coverage** | Focus only on Development Aspect | Includes Delivery and Organizational Fit | Covers full lifecycle including Contracts and Knowledge Management |
+| **Depth of Evaluation** | Surface-level checks | Structural and Intent-level reviews | Outcome-driven evaluation aligned with business goals |
+| **Documentation & Knowledge** | Scattered documentation | Review records exist but not reused | Structured, reusable formats with ADR integration |
+| **Tooling Integration** | Manual reviews only | Partial template use | AI-assisted reviews using structured prompts |
+| **Stakeholder Alignment** | Reviewer-dependent | Some consensus on scope | Review scope defined and aligned using this matrix |
+
+This perspective allows you to set improvement targets, such as “Let’s advance from Level 2 to Level 3 by introducing traceable ADRs and business-aligned outcome evaluations.” It is also helpful when evaluating a team’s architectural governance maturity.
