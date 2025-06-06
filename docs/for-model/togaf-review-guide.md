@@ -1,3 +1,11 @@
+# Terminology Note: Broad vs. Narrow Sense of Architecture Review
+
+In this guide, the term "architecture review" is used in a **broad sense**, aligned with the TOGAF ADM phases. It includes not only technical architecture reviews (e.g., Phase D), but also reviews of architecture vision (Phase A), solution composition (Phase E), and migration feasibility (Phase F).
+
+In contrast, in practice, the term "architecture review" often refers to a **narrower scope**, focusing primarily on the structure and quality of the technology architecture itself—typically centered in Phase D.
+
+To avoid confusion, this guide treats all TOGAF-phase-aligned reviews as "architecture reviews (broad sense)" and encourages consistent naming and understanding among stakeholders.
+
 # TOGAF Phase-Specific Architecture Review Perspective Guide
 
 This document is a guide that organizes representative perspectives and review objectives for architecture reviews conducted at the end of each phase of the TOGAF ADM (Architecture Development Method).
@@ -17,10 +25,10 @@ This document is a guide that organizes representative perspectives and review o
 ## Phases B–D: Business / Information Systems / Technology Architecture
 
 - **Review Perspectives**:
-  - Consistency between NFRs and configuration design (performance, availability, modifiability, etc.)
+  - Consistency between NFRs and configuration design (performance, availability, modifiability, extensibility, etc.)
   - Consistency of the technology stack (e.g., reasons for introducing Camel or Kafka)
-  - Consistency between development aspects and delivery aspects (ease of development, CI/CD compatibility)
-  - Explainable responsibility division (service granularity, clear ownership of data)
+  - Consistency between development aspects and delivery aspects (ease of development, CI/CD compatibility, deployability, Day 2 operability)
+  - Explainable responsibility division (service granularity, clear ownership of data and runtime behavior)
 
 - **Supplementary Perspectives**:
   - 🚨 Undefined facade layer (e.g., Camel)
@@ -31,6 +39,7 @@ This document is a guide that organizes representative perspectives and review o
   - Security design (authentication, authorization, threat modeling, etc.) considered from the initial stages
   - Effective utilization of standardized technical assets within the organization
   - Incorporation of operational ease (monitoring, alerts, metrics) into the development configuration
+  - Whether DR (Disaster Recovery) and failover operation are reviewed as a system and as a whole solution
 
 ## Phase E: Opportunities & Solutions
 
@@ -55,6 +64,7 @@ This document is a guide that organizes representative perspectives and review o
 ## Phase G: Implementation Governance (First half: Alignment with technical implementation, Second half: Alignment with outcomes)
 
 - **Review Perspectives**:
+  - Whether Day 2 operation responsibilities are clearly defined across DevOps, infrastructure, and application teams
   - Whether release plans and WBS align with the configuration
   - Whether release order matches dependencies
   - Preparation for handover to operations (log design, observability, failure response design)

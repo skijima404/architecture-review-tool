@@ -9,7 +9,8 @@ Architecture reviews are not checklist-based inspections from a single viewpoint
 ### Impact Scope (What aspects are affected by architectural decisions?)
 
 * Development Aspect
-* Delivery Aspect (CI/CD, Operations)
+* Delivery & Deployment Aspect (CI/CD, release, observability, runbook ownership)
+* Operability & Resilience (monitoring, DR, Day 2 operation, recoverability)
 * Business Alignment
 * Project Feasibility
 * Organizational & Team Fit
@@ -31,7 +32,8 @@ These are presented in a matrix below.
 | Impact \ Depth | Surface Level | Structural Design Level | Intent & Rationale Level | Outcome-Oriented Level | Risk Examples When Missed |
 |----------------|---------------|--------------------------|--------------------------|-------------------------|-----------------------------|
 | Development Aspect | Diagram inconsistencies, naming misalignment | Responsibility misplacement, excessive coupling | Unclear rationale for technology choices | Misalignment with developer experience or team structure | Rework during implementation, accumulation of technical debt |
-| Delivery Aspect | Incomplete CI diagrams, misunderstood topology | Lack of redundancy, poor observability, missing throttling or failover design | Design incompatible with DevOps or Site Reliability practices | Poor MTTR, lacking observability metrics | Production failures, release delays |
+| Delivery & Deployment Aspect | Incomplete CI diagrams, misunderstood topology | Lack of redundancy, poor observability, missing throttling or failover design | Design incompatible with DevOps or Site Reliability practices | Poor MTTR, lacking observability metrics | Production failures, release delays |
+| Operability & Resilience | No runbook or unclear alerts | Missing failover path, no DR topology | No ownership for Day 2 ops or maintenance structure | Poor MTTR, system fails after failover, unclear escalation paths | DR failure, incident escalation delays, post-release operation collapse |
 | Business Alignment | Misalignment between slides and architecture diagrams | Missing traceability to KPIs or NFRs | Disconnect with mid-term plans or business strategy | Execution architecture does not realize stated business vision | Inability to justify to executives, failed investment |
 | Project Feasibility | Inconsistent documentation granularity | Low modifiability, rigid architecture | Ambiguous scope and stakeholder misalignment | Underlying cause of schedule or budget overruns | Delays, scope creep |
 | Organizational Fit | Unclear ownership boundaries | Operations reliant on key individuals | Misalignment with training and support capabilities | Black-box systems, high personnel dependency | Failed transition to operations, fragile maintenance |
@@ -57,7 +59,7 @@ This framework can be extended to:
 
 This structure is based on the following principles:
 
-- **Impact Scope (Horizontal Axis)**: Covers the breadth of influence from development to business, from lifecycle to procurement—aligned with TOGAF ADM phases B to G.
+- **Impact Scope (Horizontal Axis)**: Covers the breadth of influence from development to business, from lifecycle to procurement— including deployment responsibility and Day 2 operability—aligned with TOGAF ADM phases B to G.
 - **Depth (Vertical Axis)**: Defines review layers from superficial errors to strategic intent and business alignment. The deeper layers emphasize consistency between business goals and design rationale.
 - **Risk-Based Justification**: Each cell includes an example risk to help reviewers understand the importance of each aspect and drive meaningful discussion.
 - **Extensibility**: The matrix is adaptable—add/remove axes or weight certain areas depending on project type and organizational maturity.
