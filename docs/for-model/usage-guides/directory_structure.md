@@ -18,10 +18,14 @@ architecture-review-tool/
 │   │   ├── README.md
 │   │   └── user-guide.md
 │   ├── for-model/             # Contextual data for AI (e.g., ChatGPT)
+│   │   ├── usage-guides/      # How to use this repository and its tools
+│   │   │   └── directory_structure.md
+│   │   ├── design-notes/      # Architecture review model structure and rationale
+│   │   │   ├── architecture-review-axes.md
+│   │   │   ├── review-layering.md
+│   │   │   └── togaf-review-guide.md
 │   │   ├── context.md
-│   │   ├── directory_structure.md
-│   │   ├── reviewer-instruction.md
-│   │   └── architecture.md
+│   │   └── llm-threshold-notes.md
 │   └── adr/                   # Architecture Decision Records for this tool itself
 │       ├── 0001-record-format.md
 │       └── 0002-github-structure.md
