@@ -1,0 +1,23 @@
+```mermaid
+%% File: rag-architecture/rag-architecture-diagram.mmd
+
+graph TD
+  UI["User Interface<br/>(Prompt Input & Output)"]
+  QG["Query Generator"]
+  RETRIEVER["Retriever"]
+  VECTORDB["Vector Store<br/>(e.g. FAISS, Weaviate)"]
+  EMBEDDER["Embedder<br/>(Text to Vector)"]
+  LLM["LLM / Generator<br/>(GPT, Claude, etc)"]
+  DATASRC["Knowledge Source<br/>(Markdown, PDF, etc)"]
+
+  UI --> QG
+  QG --> RETRIEVER
+  RETRIEVER --> VECTORDB
+  VECTORDB --> RETRIEVER
+  RETRIEVER --> LLM
+  QG --> LLM
+  LLM --> UI
+
+  DATASRC --> EMBEDDER
+  EMBEDDER --> VECTORDB
+```

@@ -1,0 +1,27 @@
+# ADR-0001: Node Type Identification via ID Prefix
+
+## Status
+Accepted
+
+## Context
+In this project, we extract node data from a Neo4j graph to generate explanations, perform reviews, and build prompt inputs for generative AI. Each node (Success Criteria, Symptom, Root Cause) must be identified and filtered accurately within scripts.
+
+We originally used Cypher queries per node type to avoid query complexity, but maintaining that approach across deeper trees (e.g., multi-hop relationships) increased the burden. A more maintainable method was required to extract node types without overcomplicating the Cypher logic.
+
+## Decision
+We decided to identify the node type by its **ID prefix**, which follows a fixed naming convention:
+
+| Prefix | Node Type         |
+|--------|-------------------|
+| `sc-`  | Success Criteria   |
+| `rf-`  | Symptom *(formerly Risk Factor)* |
+| `rc-`  | Root Cause         |
+
+This allows the extraction script to parse all edges first and classify nodes using only their IDs, without additional type-specific queries or label checks.
+
+Although the prefix `rf-` originally stood for *Risk Factor*, the conceptual term was later replaced by *Symptom*. We retain the original ID prefix for compatibility and simplicity.
+
+## Consequences
+- Scripts can remain generic and type-agnostic, improving flexibility and maintainability.
+- All IDs must adhere to this prefix convention; this rule is **binding** across the tool and knowledge repositories.
+- The `architecture-review-knowledge` repository must avoid altering node ID prefixes without coordination, and the convention should be documented there as well.

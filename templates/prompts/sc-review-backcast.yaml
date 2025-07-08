@@ -1,0 +1,22 @@
+id: prompt-sc-review
+title: "SCからのバックキャストによるリスク分析"
+description: |
+  指定された成功基準 (Success Criteria) を起点として、
+  関連する症状 (Symptom) および根本原因 (Root Cause) を
+  Backcasting によって構造的に洗い出すためのプロンプトテンプレートです。
+
+  各 Root Cause に至るまでの因果関係を明示し、レビュー時の構造理解や
+  リスクの見落とし防止に役立てます。
+
+context:
+  focus_node_type: success_criteria
+  reasoning_path: backcasting
+  output_format: nested_markdown_list
+  include_relationships: true
+  max_depth: 3
+  language: en
+role: ai-reviewer
+example_prompt: >
+  Given the success criteria `sc-001`, identify all related symptoms and root causes by traversing
+  the graph using backcasting logic. For each root cause, explain the chain of relationships from
+  the SC to the cause. Present the output as a nested bullet list grouped by symptom.

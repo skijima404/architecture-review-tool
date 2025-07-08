@@ -18,8 +18,10 @@ architecture-review-tool/
 │   │   ├── README.md
 │   │   └── user-guide.md
 │   ├── for-model/             # Contextual data for AI (e.g., ChatGPT)
+│	│   ├── review-model-design/
+│	│   │   └── graph-ai-handoff-plan.md
 │   │   ├── usage-guides/      # How to use this repository and its tools
-│   │   │   └── directory_structure.md
+│   │   │   └── directory-structure.md
 │   │   ├── design-notes/      # Architecture review model structure and rationale
 │   │   │   ├── architecture-review-axes.md
 │   │   │   ├── review-layering.md
@@ -44,8 +46,24 @@ architecture-review-tool/
 │       ├── review-log/
 │       └── prompts/
 ├── scripts/                   # Helper scripts (e.g., generation/build)
-│   └── build.sh
+│   └── run-backcasting-extraction-byid.py
 ├── ai-memory/                 # Local dev notes and external memory for AsistA (ChatGPT)
+├── templates/
+│   ├── prompts/              # Reasoning prompt templates (e.g., backcasting, roll-up)
+│   │   ├── backcasting/
+│   │   └── rollup/
+│   └── queries/              # Cypher query templates categorized by use case
+│       ├── backcasting/
+│       │   ├── from-sc.cypher
+│       │   ├── root-cause.cypher
+│       │   └── symptom.cypher
+│       └── rollup/
+│           ├── from-rc.cypher
+│           ├── retrieve-edges.cypher
+│           └── retrieve-nodes.cypher
+├── runs/                     # Logs of prompt executions and LLM outputs
+│   ├── 2025-07-08-sc-001-backcasting.md
+│   └── 2025-07-08-rc-014-impact.md
 ```
 
 ⸻
@@ -58,3 +76,6 @@ architecture-review-tool/
 	3.	Review Records (Outcomes)
 → samples/case-*/review-log/ stores review results in Markdown (based on templates)
 
+
+├── templates/
+│   ├── prompts/              # Reasoning prompt templates (e.g., backcasting, roll-up)
