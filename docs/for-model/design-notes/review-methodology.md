@@ -45,7 +45,7 @@ This methodology focuses on identifying risks that threaten business continuity 
 
 ---
 
-## 2.5 Dialog, Reflection, and Structural Sensitivity
+## 3. Dialog, Reflection, and Structural Sensitivity
 
 Architecture review is not merely about critique or validation—it is a structured dialogue.  
 In this dialogue, the reviewer poses questions not to judge, but to surface assumptions, highlight blind spots, and invite reflection. The reviewee is encouraged to re-express their design decisions through another's lens, often leading to deeper insights and improved clarity.
@@ -55,6 +55,6 @@ Local changes in architecture often have system-wide implications: introducing m
 
 A meaningful review, therefore, does not merely examine isolated design fragments—it anticipates and interrogates their ripple effects. It helps the team not only see what was changed, but also what must change with it.
 
-## 3. Closing Thoughts
+## 4. Closing Thoughts
 
 Architecture review is not the goal in itself—it is a means to improve system quality and ensure alignment with long-term business needs. The ultimate purpose of any review is to identify actionable insights that lead to meaningful improvements. A successful review process enables stakeholders to prioritize efforts, reduce future risks, and build systems that are not only technically sound but also resilient, adaptable, and valuable to the organization.
