@@ -8,7 +8,7 @@ USER = os.getenv("NEO4J_USER", "neo4j")
 PASSWORD = os.getenv("NEO4J_PASSWORD", "testpassword")
 
 # Cypher query file paths
-QUERY_DIR = "templates/queries/backcasting"
+QUERY_DIR = "architecture-review-tool/templates/queries/backcasting"
 NODE_DIR = QUERY_DIR
 EDGE_FILE = os.path.join(QUERY_DIR, "from-sc.cypher")
 SYMPTOM_FILE = os.path.join(NODE_DIR, "symptom.cypher")
@@ -16,7 +16,7 @@ ROOT_CAUSE_FILE = os.path.join(NODE_DIR, "root-cause.cypher")
 SUCCESS_CRITERIA_FILE = os.path.join(NODE_DIR, "success-criteria.cypher")
 
 # Output directory
-OUTPUT_DIR = "runs/backcasting"
+OUTPUT_DIR = "architecture-review-tool/runs/backcasting"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def read_query(path):
@@ -44,20 +44,27 @@ def extract_data(sc_id):
 
         # Run queries
         edges = run_query(session, edge_query, {"sc_id": sc_id})
+        for edge in edges:
+            print("Edge:", edge)
 
         # Classify node IDs by type
-        symptom_ids = sorted({edge["id_to"] for edge in edges if edge.get("id_to", "").startswith("rf-")})
-        root_cause_ids = sorted({edge["id_to"] for edge in edges if edge.get("id_to", "").startswith("rc-")})
-        success_criteria_ids = sorted({edge["id_to"] for edge in edges if edge.get("id_to", "").startswith("sc-")})
+        symptom_ids = sorted({edge["to_id"] for edge in edges if edge.get("to_id", "").startswith("rf-")})
+        root_cause_ids = sorted({edge["to_id"] for edge in edges if edge.get("to_id", "").startswith("rc-")})
+        success_criteria_ids = sorted({edge["to_id"] for edge in edges if edge.get("to_id", "").startswith("sc-")})
 
         # Debug output
         print("Symptom IDs:", symptom_ids)
         print("Root Cause IDs:", root_cause_ids)
         print("Success Criteria IDs:", success_criteria_ids)
+        print("Running symptom query with IDs:", symptom_ids)
+        print("Running root cause query with IDs:", root_cause_ids)
+        print("Running SC query with ID:", sc_id)
 
         symptoms = run_query(session, symptom_query, {"symptom_ids": symptom_ids})
-        root_causes = run_query(session, root_cause_query, {"sc_id": sc_id})
-        sc_node = run_query(session, sc_query, {"sc_id": sc_id})
+
+        root_causes = run_query(session, root_cause_query, {"rc_ids": root_cause_ids})
+
+        sc_node = run_query(session, sc_query, {"sc_ids": [sc_id]})
 
         # Write outputs
         write_csv(os.path.join(OUTPUT_DIR, f"{sc_id}_edges.csv"), edges[0].keys() if edges else [], [r.values() for r in edges])
