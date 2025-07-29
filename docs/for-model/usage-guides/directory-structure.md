@@ -27,7 +27,8 @@ architecture-review-tool/
 │   │   │   ├── review-layering.md
 │   │   │   └── togaf-review-guide.md
 │   │   ├── context.md
-│   │   └── llm-threshold-notes.md
+│   │   ├── llm-threshold-notes.md
+│   │   ├── prompt-sequence/       # Execution order and prompt workflow for AI-assisted review
 │   └── adr/                   # Architecture Decision Records for this tool itself
 │       ├── 0001-record-format.md
 │       └── 0002-github-structure.md
@@ -75,6 +76,8 @@ architecture-review-tool/
 → samples/case-*/adr/, principles/, and prompts/ hold design data to be reviewed
 	3.	Review Records (Outcomes)
 → samples/case-*/review-log/ stores review results in Markdown (based on templates)
+
+- `prompt-sequence/`: Stores prompt execution flow and sequence-specific instructions for ChatGPT to follow.
 
 
 ├── templates/
