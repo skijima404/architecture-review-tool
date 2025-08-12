@@ -1,4 +1,4 @@
-# Output Templates
+# Install Output Templates
 
 This step installs the output format templates that the architecture reviewer assistant will use when generating summaries and recommendations.
 

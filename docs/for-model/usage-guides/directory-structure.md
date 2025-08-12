@@ -41,6 +41,7 @@ architecture-review-tool/
 │       ├── 02_roleplay-template.md
 │       └── 03_reflection-template.md
 ├── samples/                   # Sample use cases (training or demos)
+│   ├── input/                 # Input format samples and WIP examples
 │   └── case-legacy-system/
 │       ├── adr/
 │       ├── principles/
@@ -62,6 +63,14 @@ architecture-review-tool/
 │           ├── from-rc.cypher
 │           ├── retrieve-edges.cypher
 │           └── retrieve-nodes.cypher
+├── review-log/                # Session-based review records (input + output)
+│   ├── review-001/
+│   │   ├── input/              # Materials before review (SC, RC, context, artifacts)
+│   │   └── output/             # Results after review (AAR, ADR drafts, summaries, transcripts)
+│   ├── review-002/
+│   └── review-sample/          # Example review session
+│       ├── input/              # Materials before review (SC, RC, context, artifacts)
+│       └── output/             # Results after review (AAR, ADR drafts, summaries, transcripts)
 ├── runs/                     # Logs of prompt executions and LLM outputs
 │   ├── 2025-07-08-sc-001-backcasting.md
 │   └── 2025-07-08-rc-014-impact.md
@@ -75,10 +84,8 @@ architecture-review-tool/
 	2.	Architecture Repository (Review Targets)
 → samples/case-*/adr/, principles/, and prompts/ hold design data to be reviewed
 	3.	Review Records (Outcomes)
-→ samples/case-*/review-log/ stores review results in Markdown (based on templates)
+→ review-log/ stores session-based review records, each with input and output folders enabling traceability, backlog extraction, and potential automation
 
 - `prompt-sequence/`: Stores prompt execution flow and sequence-specific instructions for ChatGPT to follow.
 
-
-├── templates/
-│   ├── prompts/              # Reasoning prompt templates (e.g., backcasting, roll-up)
+- Note: AAR and ADR are now stored as part of the `review-log` outputs, consolidating review outcomes with their inputs in the same session folder. This structure improves traceability and facilitates backlog extraction without separate top-level folders for AAR, ADR, transcripts, or summary reports.

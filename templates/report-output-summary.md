@@ -1,3 +1,7 @@
+<!--
+NOTE: Priority should be assigned with business outcome impact in mind by default.
+If needed, reviewers may reweight based on delivery milestones or stakeholder sensitivity.
+-->
 # Architecture Review Output Summary
 
 This report summarizes the key findings from the architecture review, organized to support actionable decisions.  
@@ -21,16 +25,6 @@ Introduce retry mechanisms with exponential backoff and circuit breakers for all
 
 **Optional Reflection:**  
 If this API fails in production, who detects it first? Is the recovery automatic or manual?
-
----
-
-## TOGAF Coverage Summary
-
-| Phase | System-Level | Subsystem Interface | Subsystem Internal |
-|-------|--------------|---------------------|---------------------|
-| B     | ✅ To-Be only | ❌ Missing           | ❌ Missing           |
-| C     | ✅ As-Is only | ✅ To-Be only        | ❌ Missing           |
-| D     | ✅ Both       | ✅ Both              | 🔶 Partial           |
 
 ---
 
@@ -76,19 +70,6 @@ Include technical or procedural suggestions if appropriate.>
 **Optional Reflection:**  
 <Optional. Pose a short, reflective question that helps the reviewee consider broader implications.  
 e.g., "If this API fails in production, who detects it first?" >
-
----
-
-## TOGAF Coverage Summary
-
-| Phase | System-Level | Subsystem Interface | Subsystem Internal |
-|-------|--------------|---------------------|---------------------|
-| B     | <e.g., ✅ To-Be only> | <e.g., ❌ Missing> | <e.g., ❌ Missing> |
-| C     | <e.g., ✅ As-Is only> | <e.g., ✅ To-Be only> | <e.g., ❌ Missing> |
-| D     | <e.g., ✅ Both> | <e.g., ✅ Both> | <e.g., 🔶 Partial> |
-
-<Use this table to indicate which architectural views have been sufficiently covered at each TOGAF phase.  
-This helps identify blind spots and skill biases in the current architecture documentation.>
 
 ---
 

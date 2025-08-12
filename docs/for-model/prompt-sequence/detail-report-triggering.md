@@ -22,7 +22,7 @@ To produce a detailed, standalone explanation of a specific architectural concer
 
 ## 📦 Inputs Expected Before Triggering
 
-- A prioritized list of findings or action items
+- A prioritized list of findings or action items (initially from Step 6's generate-summary; refined version incorporating context from Steps 7–8)
 - Identification of a specific item requiring deeper explanation
 - Any related artifacts (e.g., GraphDB node ID, AAR link, architectural diagram snippet)
 
